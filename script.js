@@ -1,9 +1,14 @@
-$.getJSON("pizza.json", function (data) {
-    let dataPizza = data.menu
-    $.each(dataPizza, function (i, data) {
-        $('#daftar-menu').append('<div class="col-lg-4 d-flex justify-content-center"><div class="card mb-5" style="width: 18rem;"><img src="img/pizza/' + data.gambar + '" class="card-img-top"><div class="card-body"><h5 class="card-title">' + data.nama + '</h5><p class="card-text">' + data.deskripsi + '</p><p>Rp. ' + data.harga + ',-</p><a href="#" class="btn btn-primary">Beli Sekarang</a></div></div></div>');
-    })
-});
+function isiContentMenu() {
+    $.getJSON("pizza.json", function (data) {
+        let dataPizza = data.menu
+        $.each(dataPizza, function (i, data) {
+            $('#daftar-menu').append('<div class="col-lg-4 d-flex justify-content-center"><div class="card mb-5" style="width: 18rem;"><img src="img/pizza/' + data.gambar + '" class="card-img-top"><div class="card-body"><h5 class="card-title">' + data.nama + '</h5><p class="card-text">' + data.deskripsi + '</p><p>Rp. ' + data.harga + ',-</p><a href="#" class="btn btn-primary">Beli Sekarang</a></div></div></div>');
+        })
+    });
+}
+
+isiContentMenu();
+
 
 
 $('.nav-link').on('click', function (e) {
@@ -12,16 +17,17 @@ $('.nav-link').on('click', function (e) {
     $(e.target).addClass('active')
     let isiNav = $(e.target).html()
     $('#h1').html(isiNav)
+    const daftarMenu = $('.col-lg-4')
 
     if (isiNav == 'All Menu') {
-        $.getJSON("pizza.json", function (data) {
-            let dataPizza = data.menu
-            $.each(dataPizza, function (i, data) {
-                $('#daftar-menu').append('<div class="col-lg-4 d-flex justify-content-center"><div class="card mb-5" style="width: 18rem;"><img src="img/pizza/' + data.gambar + '" class="card-img-top"><div class="card-body"><h5 class="card-title">' + data.nama + '</h5><p class="card-text">' + data.deskripsi + '</p><p>Rp. ' + data.harga + ',-</p><a href="#" class="btn btn-primary">Beli Sekarang</a></div></div></div>');
-            })
-        });
+        for (let i = 0; i < 3; i++) {
+            daftarMenu[i].remove()
+        }
+        isiContentMenu();
         return;
     }
+
+
 
     $.getJSON("pizza.json", function (data) {
         let dataPizza = data.menu
