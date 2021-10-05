@@ -2,3 +2,9 @@
     margin: 0 !important;
     padding: 0 !important;
 }
+
+body {
+    background: url('http://unblast.com/wp-content/uploads/2020/05/Light-Wood-Background-Texture-1.jpg') no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
